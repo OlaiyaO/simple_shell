@@ -1,0 +1,1 @@
+This is a simple shell project that deals with the development of a command-line shell, which is a program that provides a text-based interface for users to interact with an operating system or execute commands
