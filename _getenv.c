@@ -1,18 +1,19 @@
 #include "simple_shell.h"
-#include "string_utils.h"
 
 /**
- * get_environment_variable - Get the value of environment variable by name.
+ * _getenv - Get the value of an environment variable by name.
  * @name: Environment Variable Name
- * Return: The Value of Environment Variable or NULL.
+ * Return: The Value of the Environment Variable or NULL.
  */
-char *get_environment_variable(char *name)
+
+char *_getenv(char *name)
 {
 	size_t name_len, value_len;
 	char *value;
 	int i, j, k;
 
 	name_len = _strlen(name);
+
 	for (i = 0; environ[i]; i++)
 	{
 		if (_strncmp(name, environ[i], name_len) == 0)
