@@ -1,51 +1,37 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include "main.h"
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-
-static int last_status = 0;
-
-int get_last_status(void)
-{
-	return (last_status);
-}
+#include "simple_shell.h"
 
 /**
- * process_command - prints the environment
- * @new_ac: command-line arguments.
- * @new_av: argument strings.
- * @av: variable strings
- * Return: Always 0.
+ * process_command - Parse and execute a command.
+ * @line: Command line.
+ * @counter: Line counter.
+ * @file: File descriptor.
+ * @argv: Program name.
+ * Return: Exit status.
  */
 
-int process_command(char **av, int new_ac, char **new_av)
+int process_command(char *line, int counter, FILE *file, char **argv)
 {
-	char command_path[512];
-	InternalFunction internal_function;
+	char **cmd_tokens;
 	int status = 0;
-	char **env = get_shell_env();
 
-	internal_function = is_internal_command(new_av[0]);
-	if (internal_function != NULL)
+	cmd_tokens = tokenize_input(line);
+
+	if (is_builtin_command(cmd_tokens))
 	{
-		status = internal_function(new_ac, new_av, env);
-	}
-	else if (command_exists(new_av[0], command_path, env) != -1)
-	{
-		free(new_av[0]);
-		new_av[0] = _strdup(command_path);
-		status = fork_command(command_path, new_av, env);
+		if (_strcmp(cmd_tokens[0], "exit") == 0)
+		{
+			handle_exit(cmd_tokens, line, file);
+		}
+		else
+		{
+			status = handle_builtin_cmd(cmd_tokens, status);
+		}
 	}
 	else
 	{
-		_printf("%s: %s: command not found\n", av[0], new_av[0]);
-		status = 1;
+		status = handle_executable(cmd_tokens, line, counter, argv);
 	}
-	last_status = status;
-	free_av(new_av);
+
+	free(cmd_tokens);
 	return (status);
 }
