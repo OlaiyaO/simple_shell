@@ -9,9 +9,9 @@
 
 void sigint_handler(int sig)
 {
-	(void) sig;
-
-	PRINT("\nshell$ ");
-	fflush(stdout);
+	if (sig == SIGINT)
+	{
+		PRINT("\nshell$ ");
+	}
 }
 
