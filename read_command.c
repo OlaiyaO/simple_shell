@@ -24,7 +24,7 @@ int read_command(char **lineptr, size_t *n, int fd)
 
 	if (num_read == -1)
 	{
-		return (0);
+		return (-1);
 	}
 	end =  *n - 1;
 	while( (end >= 0) && *(*lineptr + end) <= 32 )
