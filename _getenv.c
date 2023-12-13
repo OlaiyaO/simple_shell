@@ -2,9 +2,9 @@
 #include "string_utils.h"
 
 /**
- * get_environment_variable - Get the value of an environment variable by name.
+ * get_environment_variable - Get the value of environment variable by name.
  * @name: Environment Variable Name
- * Return: The Value of the Environment Variable or NULL.
+ * Return: The Value of Environment Variable or NULL.
  */
 char *get_environment_variable(char *name)
 {
