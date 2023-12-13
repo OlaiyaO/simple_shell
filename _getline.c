@@ -2,6 +2,7 @@
 
 /**
  * read_character - Helper function to read a single character from stdin.
+ * @buffer: The buffer to be used
  * Return: The character read.
  */
 

@@ -73,10 +73,10 @@ void print_illegal_number_error(
 );
 
 void exit_shell(
-        char **cmd_array,
-        char *user_input,
-        char **program_argv,
-        int execution_count
+	char **cmd_array,
+	char *user_input,
+	char **program_argv,
+	int execution_count
 );
 
 void handle_hashtag(char *buff);

@@ -29,10 +29,9 @@ void print_command_not_found_error(
 /**
  * print_illegal_number_error - Print an error message for an
  *				illegal number in a command.
- * @program_name: Name of the program.
+ * @arguments: Name of the program.
  * @counter: Counter value.
  * @command: Name of the command.
- * @illegal_number: The specific illegal number.
  */
 
 void print_illegal_number_error(

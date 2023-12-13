@@ -1,7 +1,7 @@
 #include "simple_shell.h"
 
 /**
- * exit_bul_for_file - Exit Shell Case Of File
+ * handle_exit - Exit Shell Case Of File
  * @command: Parsed Command
  * @line_from_file: Line From A File
  * @file_descriptor: File Descriptor
