@@ -2,7 +2,7 @@
 
 /**
  * _getenv - string length
- * env: ...
+ * @env: ...
  * @keyword : pointer
  * Return: Always 0.
  */

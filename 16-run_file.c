@@ -20,6 +20,10 @@ int run_file(int ac, char **av, int fd)
 {
 	char *lineptr = NULL;
 	size_t n = 0;
+	char *command_lines[10];
+        int num_commands=0;
+        int i;
+        char *token;
 
 	n = n;
 	ac = ac;
@@ -33,7 +37,18 @@ int run_file(int ac, char **av, int fd)
 		n = 0;
 		if (read_command(&lineptr, &n, fd))
 		{
-			process_command_line(av, lineptr);
+			num_commands = 0;
+                        token = get_token(lineptr, ";");
+                        while(token != NULL)
+                        {
+                                command_lines[num_commands++] = _strdup(_trim(token));
+                                token = get_token(NULL, ";");
+                        }
+                        for(i=0; i < num_commands; i++)
+                        {
+				process_command_line(av, command_lines[i]);
+				free(command_lines[i]);
+			}
 			free(lineptr);
 		}
 		else

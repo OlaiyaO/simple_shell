@@ -13,6 +13,7 @@
 int internal_exit(int ac, char **av, char **env)
 {
 	int rc = 0;
+
 	env = env;
 
 	if (ac > 1)

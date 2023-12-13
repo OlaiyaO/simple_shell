@@ -21,10 +21,11 @@ int main(int ac, char **av, char **env)
 
 	env = copy_env(env);
 
-	if(ac > 1 && stat(av[1],&file_info) == 0)
+	if (ac > 1 && stat(av[1], &file_info) == 0)
 	{
-		int fd= open(av[1], O_RDONLY);
-		if(fd == -1)
+		int fd = open(av[1], O_RDONLY);
+
+		if (fd == -1)
 		{
 
 		}
@@ -39,7 +40,7 @@ int main(int ac, char **av, char **env)
 	}
 	else
 	{
-		rc = run_command(ac, av, 0);	
+		rc = run_command(ac, av, 0);
 	}
 
 	free_env(env);

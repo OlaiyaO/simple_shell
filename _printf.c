@@ -47,7 +47,7 @@ int print_specials(char d)
  */
 int process_directive(char d, va_list *args)
 {
-	char int_arg; 
+	char int_arg;
 	char *str_arg;
 	int num_printed = 0;
 
@@ -55,7 +55,7 @@ int process_directive(char d, va_list *args)
 	{
 		case 'c':
 			int_arg = va_arg(*args, int);
-			num_printed += write(STDOUT_FILENO, &int_arg, 1); 
+			num_printed += write(STDOUT_FILENO, &int_arg, 1);
 		break;
 		case 's':
 			str_arg = va_arg(*args, char *);

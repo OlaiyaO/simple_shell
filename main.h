@@ -17,7 +17,7 @@ char *_strdup(const char *str);
 int command_exists(const char *command, char *command_path, char **env);
 int _printf(const char *format, ...);
 
-typedef int (*InternalFunction)(int, char **,char **);
+typedef int (*InternalFunction)(int, char **, char **);
 
 struct FunctionEntry
 {
@@ -43,6 +43,9 @@ char **get_shell_env(void);
 char **copy_env(char **env);
 void  free_env(char **env);
 int add_env(char **env, char *env_variable);
+char *_trim(char *str);
+char* _itoa(int number);
+int get_last_status(void);
 
 
 #endif

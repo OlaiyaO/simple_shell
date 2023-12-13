@@ -14,7 +14,8 @@
 int internal_cd(int ac, char **av, char **env)
 {
 	char *new_dir;
-	if(ac == 1)
+
+	if (ac == 1)
 	{
 		new_dir = _getenv(env, "HOME");
 	}
@@ -22,11 +23,11 @@ int internal_cd(int ac, char **av, char **env)
 	{
 		new_dir = av[1];
 	}
-	if(new_dir == NULL)
+	if (new_dir == NULL)
 	{
 		return (-1);
 	}
-	if(chdir(new_dir) == -1)
+	if (chdir(new_dir) == -1)
 	{
 		return (-1);
 	}

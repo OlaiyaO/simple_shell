@@ -17,6 +17,7 @@ int fork_command(char *lineptr, char **av, char **env)
 	int status;
 	pid_t child_pid;
 
+	status = 0;
 	child_pid = fork();
 
 	if (child_pid == -1)
@@ -26,11 +27,14 @@ int fork_command(char *lineptr, char **av, char **env)
 	}
 	if (child_pid == 0)
 	{
-		execve(lineptr, av, env);
+		if (execve(lineptr, av, env) == -1)
+		{
+			return (1);
+		}
 	}
 	else
 	{
 		wait(&status);
 	}
-	return (0);
+	return (status);
 }

@@ -23,13 +23,14 @@ struct FunctionEntry functionLookupTable[] = {
 InternalFunction is_internal_command(char *command)
 {
 	int i = 0;
+
 	while(functionLookupTable[i].name != NULL)
 	{
-        	if (_strcmp(command, functionLookupTable[i].name) == 0)
+		if (_strcmp(command, functionLookupTable[i].name) == 0)
 		{
 			return (functionLookupTable[i].function);
 		}
 		i++;
-    	}
+	}
 	return ((InternalFunction)NULL);
 }
