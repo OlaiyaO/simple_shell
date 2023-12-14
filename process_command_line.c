@@ -7,6 +7,12 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+/**
+ * replace_variable - Replaces variables.
+ * @var: The variable to replace.
+ * Return: 0.
+ */
+
 char *replace_variable(char *var)
 {
 	if(var[1] == '?')

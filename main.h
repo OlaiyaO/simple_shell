@@ -46,6 +46,7 @@ int add_env(char **env, char *env_variable);
 char *_trim(char *str);
 char* _itoa(int number);
 int get_last_status(void);
+char *replace_variable(char *var);
 
 
 #endif
