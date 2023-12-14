@@ -79,6 +79,10 @@ void exit_shell(
 	int execution_count
 );
 
+char *get_user_input(void);
+
+void process_user_command(char *buffer, int *st, int count, char **argv);
+
 void handle_hashtag(char *buff);
 
 void free_pointers(char **cmd, char *line);

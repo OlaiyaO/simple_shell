@@ -13,7 +13,6 @@ int execute_commands_from_file(char *filename, char **argv)
 	char *line = NULL;
 	size_t len = 0;
 	int line_counter = 0;
-	int exit_status = 0;
 
 	file = fopen(filename, "r");
 
@@ -24,12 +23,12 @@ int execute_commands_from_file(char *filename, char **argv)
 
 	for (line_counter = 1; getline(&line, &len, file) != -1; line_counter++)
 	{
-		exit_status = process_command(line, line_counter, file, argv);
+		process_command(line, line_counter, file, argv);
 	}
 
 	if (line)
 		free(line);
 
 	fclose(file);
-	return (exit_status);
+	exit(0);
 }

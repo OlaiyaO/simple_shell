@@ -6,9 +6,6 @@
  *
  * Description: This file declares a set of string manipulation functions
  * for common operations such as concatenation, conversion, reallocation,
- * length retrieval, and comparison. These functions are designed to be used
- * in C programs for efficient string handling. Each function has its specific
- * purpose and behavior, contributing to a comprehensive suite of utilities
  * for string manipulation.
  */
 
