@@ -2,9 +2,16 @@
 #include "string_utils.h"
 
 /**
+<<<<<<< HEAD
+ * handle_user_input - Process user input in the shell.
+ * @st: The current status of the shell.
+ * @counter: Counter for command history.
+ * @argv: An array of strings containing arguments.
+=======
  * main - Entry point for the simple shell program.
  * @argc: The number of arguments.
  * @argv: An array of strings containing the arguments.
+>>>>>>> d252ac4cc635d301af7e7200e3c70556d9b55157
  * Return: The exit status of the shell.
  */
 
