@@ -5,7 +5,7 @@
  * handle_user_input - Process user input in the shell.
  * @st: The current status of the shell.
  * @counter: Counter for command history.
- * @argv: An array of strings containing the arguments.
+ * @argv: An array of strings containing arguments.
  * Return: The exit status of the shell.
  */
 int handle_user_input(int st, int counter, char **argv)
