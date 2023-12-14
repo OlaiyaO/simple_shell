@@ -2,45 +2,60 @@
 
 /**
  * read_character - Helper function to read a single character from stdin.
- * @buffer: The buffer to be used
- * Return: The character read.
+ * @current_char: Pointer to the variable where the read character will be
+ *		stored.
+ * Return: 0 on success, -1 on failure or if the program is terminated.
  */
-
-static char read_character(char *buffer)
+static int read_character(char *current_char)
 {
-	char current_char;
-	int read_status = read(STDIN_FILENO, &current_char, 1);
+	int rd = read(STDIN_FILENO, current_char, 1);
 
-	if (read_status == 0)
+	if (rd == 0)
 	{
-		free(buffer);
-		exit(EXIT_SUCCESS);
+		return (-1);
 	}
 
-	return (current_char);
+	if (rd == -1)
+	{
+		perror("read");
+		exit(EXIT_FAILURE);
+	}
+
+	return (0);
 }
 
 /**
- * _getline - Read input from stdin.
- * Return: Input string.
+ * _getline - Reads a line of input from the standard input.
+ *
+ * This function reads characters from the standard input until it encounters
+ * a newline character or EOF. It dynamically allocates memory to store the
+ * input and adjusts the buffer size as needed. The function also handles
+ * the case of reaching the end of the input stream.
+ *
+ * Return: A pointer to the allocated buffer containing the input line,
+ *         or NULL if memory allocation fails or if the program is terminated.
  */
-
-char *_getline()
+char *_getline(void)
 {
-	int index = 0, buffer_size = BUFFSIZE;
-	char *buffer = malloc(buffer_size);
+	int index = 0;
+	int buffsize = BUFFSIZE;
 	char current_char;
+	char *buffer = malloc(buffsize);
 
 	if (buffer == NULL)
 	{
-		free(buffer);
-		return (NULL);
+		perror("malloc");
+		exit(EXIT_FAILURE);
 	}
-
-	current_char = read_character(buffer);
-
 	while (current_char != EOF && current_char != '\n')
 	{
+		fflush(stdin);
+
+		if (read_character(&current_char) == -1)
+		{
+			free(buffer);
+			exit(EXIT_SUCCESS);
+		}
 		buffer[index] = current_char;
 
 		if (buffer[0] == '\n')
@@ -48,20 +63,15 @@ char *_getline()
 			free(buffer);
 			return ("\0");
 		}
-
-		if (index >= buffer_size - 1)
+		if (index >= buffsize)
 		{
-			buffer = _realloc(buffer, buffer_size, buffer_size + 1);
+			buffer = _realloc(buffer, buffsize, buffsize + 1);
+
 			if (buffer == NULL)
-			{
 				return (NULL);
-			}
 		}
-
 		index++;
-		current_char = read_character(buffer);
 	}
-
 	buffer[index] = '\0';
 	handle_hashtag(buffer);
 	return (buffer);
