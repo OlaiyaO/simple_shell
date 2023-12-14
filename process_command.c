@@ -50,6 +50,7 @@ int process_command(char **av, int new_ac, char **new_av)
 	}
 	last_status = status;
 	free_av(new_av);
+
 	return (1);
 	return (status);
 }
