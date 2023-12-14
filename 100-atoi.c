@@ -11,7 +11,6 @@
  * _atoi - Function to swap an integerm.
  *
  * Description: This function is the swaps 2 pointers holding.
- *		ineger values.
  * @s: The second int.
  * Return: void (Success)
  */
