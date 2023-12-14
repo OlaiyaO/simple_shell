@@ -36,5 +36,5 @@ char *_trim(char *str)
 	}
 	str[i + 1] = '\0';
 
-	return str;
+	return (str);
 }
