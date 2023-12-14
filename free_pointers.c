@@ -9,8 +9,13 @@
 
 void free_pointers(char **cmd, char *line)
 {
-	free(cmd);
-	free(line);
-	cmd = NULL;
-	line = NULL;
+	if (cmd != NULL && *cmd != NULL)
+	{
+		free(*cmd);
+		*cmd = NULL;
+	}
+	if (line != NULL)
+	{
+		free(line);
+	}
 }
