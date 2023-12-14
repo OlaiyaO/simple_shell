@@ -81,7 +81,7 @@ void exit_shell(
 
 char *get_user_input(void);
 
-void process_user_command(char *buffer, int *st, int count, char **argv);
+void process_user_command(char *buffer, int st, int count, char **argv);
 
 void handle_hashtag(char *buff);
 

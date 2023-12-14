@@ -2,16 +2,9 @@
 #include "string_utils.h"
 
 /**
-<<<<<<< HEAD
- * handle_user_input - Process user input in the shell.
- * @st: The current status of the shell.
- * @counter: Counter for command history.
- * @argv: An array of strings containing arguments.
-=======
  * main - Entry point for the simple shell program.
  * @argc: The number of arguments.
  * @argv: An array of strings containing the arguments.
->>>>>>> d252ac4cc635d301af7e7200e3c70556d9b55157
  * Return: The exit status of the shell.
  */
 
@@ -40,7 +33,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 			continue;
 		}
 
-		process_user_command(buffer, &st, count, argv);
+		process_user_command(buffer, st, count, argv);
 
 		free(buffer);
 	}
@@ -68,7 +61,7 @@ char *get_user_input(void)
  * @argv: Command line arguments.
  */
 
-void process_user_command(char *buffer, int *st, int count, char **argv)
+void process_user_command(char *buffer, int st, int count, char **argv)
 {
 	char **command = NULL;
 
@@ -81,11 +74,11 @@ void process_user_command(char *buffer, int *st, int count, char **argv)
 	}
 	else if (is_builtin_command(command) == 0)
 	{
-		*st = handle_builtin_cmd(command, *st);
+		st = handle_builtin_cmd(command, st);
 	}
 	else
 	{
-		*st = handle_executable(command, buffer, count, argv);
+		st = handle_executable(command, buffer, count, argv);
 	}
 
 	free_pointers(command, buffer);

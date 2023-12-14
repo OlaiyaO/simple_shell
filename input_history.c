@@ -30,5 +30,5 @@ int input_history(char *user_input)
 	}
 
 	close(file_descriptor);
-	return (0);
+	return (1);
 }

@@ -12,22 +12,22 @@
 
 int handle_executable(char **cmd, char *input, int c, char **argv)
 {
-	int status;
-	pid_t pid;
+	int st;
+	pid_t process_id;
 
-	if (cmd == NULL || cmd[0] == NULL)
+	if (*cmd == NULL)
 	{
 		return (-1);
 	}
 
-	pid = fork();
-	if (pid == -1)
+	process_id = fork();
+	if (process_id == -1)
 	{
 		perror("Error");
 		return (-1);
 	}
 
-	if (pid == 0)
+	if (process_id == 0)
 	{
 		if (_strncmp(*cmd, "./", 2) != 0 && _strncmp(*cmd, "/", 1) != 0)
 		{
@@ -42,13 +42,7 @@ int handle_executable(char **cmd, char *input, int c, char **argv)
 			exit(EXIT_FAILURE);
 		}
 	}
-	else
-	{
-		waitpid(pid, &status, 0);
-		free(input);
-		free(cmd);
-	}
-
-	return (EXIT_SUCCESS);
+	wait(&st);
+	return (0);
 }
 
