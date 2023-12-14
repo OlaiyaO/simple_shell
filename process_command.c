@@ -18,9 +18,9 @@ int process_command(char *line, int counter, FILE *file, char **argv)
 
 	if (is_builtin_command(cmd_tokens))
 	{
-		if (_strcmp(cmd_tokens[0], "exit") == 0)
+		if (_strncmp(cmd_tokens[0], "exit", 4) == 0)
 		{
-			handle_exit(cmd_tokens, line, file);
+			exit_shell(cmd_tokens, line, argv, counter);
 		}
 		else
 		{
