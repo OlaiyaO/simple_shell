@@ -1,9 +1,9 @@
 #include "simple_shell.h"
 /**
  * _realloc - Reallocates a memory block using malloc and free
- * @ptr: Pointer to the previously allocated memory
- * @old_size: Size of the old allocated space
- * @new_size: Size of the new memory block
+ * @ptr: Pointer to previously allocated memory
+ * @old_size: Size of old allocated space
+ * @new_size: Size of the memory block
  *
  * Return: Pointer to the reallocated memory block, or NULL on failure
  */
