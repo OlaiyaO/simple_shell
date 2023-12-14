@@ -23,10 +23,11 @@ char **tokenize_input(char *user_input)
 	}
 
 	token = _strtok(user_input, "\n ");
-	for (index = 0; token; index++)
+	while (token)
 	{
 		token_array[index] = token;
 		token = _strtok(NULL, "\n ");
+		index++;
 	}
 	token_array[index] = NULL;
 

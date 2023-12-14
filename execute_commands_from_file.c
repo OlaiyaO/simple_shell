@@ -7,7 +7,7 @@
  * Return: Exit status.
  */
 
-int execute_commands_from_file(char *filename, char **argv)
+void execute_commands_from_file(char *filename, char **argv)
 {
 	FILE *file;
 	char *line = NULL;

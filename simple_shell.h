@@ -52,7 +52,7 @@ void sigint_handler(int sig);
 
 char **tokenize_input(char *user_input);
 
-int process_command(char *line, int counter, FILE *file, char **argv);
+void process_command(char *line, int counter, FILE *file, char **argv);
 
 int search_and_build_path(char **cmd);
 
@@ -91,7 +91,7 @@ int is_builtin_command(char **cmd);
 
 void display_prompt(void);
 
-int execute_commands_from_file(char *filename, char **argv);
+void execute_commands_from_file(char *filename, char **argv);
 
 int handle_executable(char **cmd, char *input, int c, char **argv);
 

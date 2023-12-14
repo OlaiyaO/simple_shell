@@ -9,29 +9,26 @@
  * Return: Exit status.
  */
 
-int process_command(char *line, int counter, FILE *file, char **argv)
+void process_command(char *line, int counter, FILE *file, char **argv)
 {
 	char **cmd_tokens;
 	int status = 0;
 
 	cmd_tokens = tokenize_input(line);
 
-	if (is_builtin_command(cmd_tokens))
+	if (is_builtin_command(cmd_tokens) == 0)
 	{
-		if (_strncmp(cmd_tokens[0], "exit", 4) == 0)
-		{
-			exit_shell(cmd_tokens, line, argv, counter);
-		}
-		else
-		{
-			status = handle_builtin_cmd(cmd_tokens, status);
-		}
+		status = handle_builtin_cmd(cmd_tokens, status);
+		free(cmd_tokens);
 	}
+	else if (_strncmp(cmd_tokens[0], "exit", 4) == 0)
+	{
+		handle_exit(cmd_tokens, line, file);
+	}
+
 	else
 	{
 		status = handle_executable(cmd_tokens, line, counter, argv);
+		free(cmd_tokens);
 	}
-
-	free(cmd_tokens);
-	return (status);
 }
