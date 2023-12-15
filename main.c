@@ -44,6 +44,6 @@ int main(int ac, char **av, char **env)
 	}
 
 	free_env(env);
-
+	free_shell_alias();
 	return (rc);
 }

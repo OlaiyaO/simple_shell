@@ -22,6 +22,7 @@ int internal_exit(int ac, char **av, char **env)
 	}
 	free_av(av);
 	free_env(env);
+	free_shell_alias();
 	exit(rc);
 	return (0);
 }

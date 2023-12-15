@@ -43,6 +43,7 @@ int process_command_line(char **av, char *lineptr)
 	int new_ac;
 	char *new_av[10];
 	int last_status = 0;
+	char *alias;
 
 	token = get_token(lineptr, " ");
 	if (token != NULL)
@@ -53,10 +54,16 @@ int process_command_line(char **av, char *lineptr)
 		token = get_token(NULL, " ");
 		while (token != NULL)
 		{
+			alias = _getalias(token);
+		
 			if (token[0] == '#')
 			{
 				break;
 			}
+			else if(alias != NULL)
+			{
+				token = alias;
+			}	
 			else if(token[0] == '$')
 			{
 				token = replace_variable(token);
