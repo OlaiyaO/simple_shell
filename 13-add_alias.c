@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include "main.h"
 
+/**
+ * print_all_alias - string length
+ * Return: Always 0.
+ */
 
 int print_all_alias(void)
 {
@@ -20,8 +24,13 @@ int print_all_alias(void)
 	}
 	return (0);
 }
-
-char * build_alias_command(int ac, char **av)
+/**
+ * build_alias_command - string length
+ * @ac : pointer
+ * @av : destination
+ * Return: Always 0.
+ */
+char *build_alias_command(int ac, char **av)
 {
 	int i;
 	int j;
@@ -29,7 +38,7 @@ char * build_alias_command(int ac, char **av)
 	int length = 0;
 	char *alias_str;
 
-	for(i = 1; i < ac; i++)
+	for (i = 1; i < ac; i++)
 	{
 		length += _strlen(av[i]) + 1;
 	}
@@ -39,16 +48,16 @@ char * build_alias_command(int ac, char **av)
 		return (NULL);
 	}
 	k = 0;
-	for(i = 1; i < ac; i++)
+	for (i = 1; i < ac; i++)
 	{
 		j = 0;
-		while(av[i][j] != 0)
+		while (av[i][j] != 0)
 		{
 			alias_str[k] = av[i][j];
 			k++;
 			j++;
 		}
-		if (i < (ac-1))
+		if (i < (ac - 1))
 		{
 			alias_str[k++] = ' ';
 		}
@@ -61,7 +70,7 @@ char * build_alias_command(int ac, char **av)
  * internal_alias - string length
  * @ac : pointer
  * @av : destination
- * @alias : ...
+ * @env : ...
  * Return: Always 0.
  */
 
@@ -69,7 +78,7 @@ int internal_alias(int ac, char **av, char **env)
 {
 	int i;
 	int rc = 0;
-	
+
 	env = env;
 	ac = ac;
 	i = 0;
@@ -77,26 +86,28 @@ int internal_alias(int ac, char **av, char **env)
 	{
 		print_all_alias();
 	}
-	else 
-	{	
+	else
+	{
 		char *command = build_alias_command(ac, av);
+
 		if (command == NULL)
 		{
 			return (1);
 		}
-		printf("command: %s\n",command);
+		printf("command: %s\n", command);
 		if (_strchr(command, '=') != -1)
 		{
-			rc = add_alias(command);	
+			rc = add_alias(command);
 		}
 		else
 		{
-			for(i=1;i < ac; i++)
+			for (i = 1; i < ac; i++)
 			{
 				char *alias = _getalias(_trim(av[i]));
-				if(alias != NULL)
+
+				if (alias != NULL)
 				{
-					_printf("%s\n",alias);
+					_printf("%s\n", alias);
 				}
 			}
 		}

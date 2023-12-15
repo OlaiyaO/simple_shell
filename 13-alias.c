@@ -16,7 +16,6 @@ char **get_shell_alias(void)
 
 /**
  * free_shell_alias - string length
- * @alias : ...
  * Return: Always 0.
  */
 void  free_shell_alias(void)
@@ -27,7 +26,7 @@ void  free_shell_alias(void)
 	{
 		return;
 	}
-	
+
 	while (shell_alias[i] != NULL)
 	{
 		free(shell_alias[i]);
@@ -38,7 +37,6 @@ void  free_shell_alias(void)
 /**
  * add_alias - string length
  * @alias_variable : destination
- * @alias : ...
  * Return: Always 0.
  */
 int add_alias(char *alias_variable)
@@ -47,7 +45,7 @@ int add_alias(char *alias_variable)
 	int i;
 	int alias_count = 0;
 
-	if(shell_alias != NULL)
+	if (shell_alias != NULL)
 	{
 		while (shell_alias[alias_count] != NULL)
 		{

@@ -20,7 +20,7 @@ int run_command(int ac, char **av, int interactive)
 	char *lineptr = NULL;
 	size_t n;
 	char *command_lines[10];
-	int num_commands=0;
+	int num_commands = 0;
 	int i;
 	char *token;
 
@@ -36,16 +36,16 @@ int run_command(int ac, char **av, int interactive)
 
 		lineptr = NULL;
 		n = 0;
-		if (read_command(&lineptr, &n, 0)) 
+		if (read_command(&lineptr, &n, 0))
 		{
 			num_commands = 0;
 			token = get_token(lineptr, ";");
-			while(token != NULL)
+			while (token != NULL)
 			{
 				command_lines[num_commands++] = _strdup(_trim(token));
 				token = get_token(NULL, ";");
 			}
-			for(i=0; i < num_commands; i++)
+			for (i = 0; i < num_commands; i++)
 			{
 				process_command_line(av, command_lines[i]);
 				free(command_lines[i]);

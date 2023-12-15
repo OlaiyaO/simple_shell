@@ -7,7 +7,7 @@
  * @str2: 2nd string.
  * @result: ...
  * @buffer_size: Size of buffer.
- * Return : 0
+ * Return: 0.
  */
 
 int buildpath(const char *str1, const char *str2, char *result, size_t buffer_size)

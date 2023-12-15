@@ -15,11 +15,11 @@
 
 char *replace_variable(char *var)
 {
-	if(var[1] == '?')
+	if (var[1] == '?')
 	{
 		return (_itoa(get_last_status()));
 	}
-	else if(var[1] == '$')
+	else if (var[1] == '$')
 	{
 		return (_itoa((int)getpid()));
 	}
@@ -55,26 +55,26 @@ int process_command_line(char **av, char *lineptr)
 		while (token != NULL)
 		{
 			alias = _getalias(token);
-		
+
 			if (token[0] == '#')
 			{
 				break;
 			}
-			else if(alias != NULL)
+			else if (alias != NULL)
 			{
 				token = alias;
-			}	
-			else if(token[0] == '$')
+			}
+			else if (token[0] == '$')
 			{
 				token = replace_variable(token);
 			}
-			else if(_strcmp(token, "&&") == 0)
+			else if (_strcmp(token, "&&") == 0)
 			{
-				if(last_status == 0)
+				if (last_status == 0)
 				{
 				}
 			}
-			else if(_strcmp(token, "||") == 0)
+			else if (_strcmp(token, "||") == 0)
 			{
 
 			}

@@ -33,7 +33,7 @@ ssize_t _getline(char **lineptr, size_t *n, int fd)
 		{
 			/** attempt to read more icharacters */
 			bytes_read = read(fd, buffer, (size_t)MAX_LINE_LENGTH);
-			if(bytes_read == 0 && index == 0)
+			if (bytes_read == 0 && index == 0)
 			{
 				*n = _strlen("exit");
 				*lineptr = _strdup("exit");

@@ -4,16 +4,22 @@
 #include "main.h"
 
 /**
- * read_command - prints the environment
- * @lineptr: command-line arguments.
- * @n: argument strings.
- * Return: Always 0.
+ * prompt - ..
+ * return: 0.
  */
 
 void prompt(void)
 {
 	write(STDOUT_FILENO, "($) ", 4);
 }
+/**
+ * read_command - prints the environment
+ * @lineptr: command-line arguments.
+ * @n: argument strings.
+ * @fd: ...
+ * Return: Always 0.
+ */
+
 
 int read_command(char **lineptr, size_t *n, int fd)
 {
@@ -27,12 +33,12 @@ int read_command(char **lineptr, size_t *n, int fd)
 		return (-1);
 	}
 	end =  *n - 1;
-	while( (end >= 0) && *(*lineptr + end) <= 32 )
+	while ((end >= 0) && *(*lineptr + end) <= 32)
 	{
 		*(*lineptr + end) = 0;
 		end--;
 	}
-	if (end <= 0 )
+	if (end <= 0)
 	{
 		return (0);
 	}

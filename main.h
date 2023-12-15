@@ -44,13 +44,13 @@ char **copy_env(char **env);
 void  free_env(char **env);
 int add_env(char **env, char *env_variable);
 char *_trim(char *str);
-char* _itoa(int number);
+char *_itoa(int number);
 int get_last_status(void);
 char *replace_variable(char *var);
 char *_getalias(const char *keyword);
 void  free_shell_alias(void);
 char **get_shell_alias(void);
 int add_alias(char *alias_variable);
-int unset_alias( char *keyword);
+int unset_alias(char *keyword);
 
 #endif

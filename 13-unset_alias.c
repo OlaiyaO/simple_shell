@@ -3,11 +3,11 @@
 #include "main.h"
 
 /**
- * unset_alias ...
- * @alias : ..
+ * unset_alias - ...
+ * @keyword : ..
  * Return: Always 0.
  */
-int unset_alias( char *keyword)
+int unset_alias(char *keyword)
 {
 	int i;
 	int j;

@@ -2,7 +2,6 @@
 #include "main.h"
 /**
  * _getalias - string length
- * @alias: ...
  * @keyword : pointer
  * Return: Always 0.
  */
@@ -13,9 +12,9 @@ char *_getalias(const char *keyword)
 	char ch;
 	char **alias = get_shell_alias();
 
-	if(alias == NULL)
+	if (alias == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 
 	for (; *alias != NULL; alias++)

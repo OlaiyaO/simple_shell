@@ -9,6 +9,12 @@
 
 static int last_status = 0;
 
+/**
+ * get_last_status - Get the last status.
+ *
+ * Return: last status.
+ */
+
 int get_last_status(void)
 {
 	return (last_status);
@@ -18,7 +24,6 @@ int get_last_status(void)
  * process_command - prints the environment
  * @new_ac: command-line arguments.
  * @new_av: argument strings.
- * @env: variable strings
  * @av: variable strings
  * Return: Always 0.
  */

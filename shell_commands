@@ -1,4 +1,4 @@
-ls 
+ls
 ls -l
 echo "hello"
 ls ; env

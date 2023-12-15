@@ -29,6 +29,11 @@ int _strcpy(char *dest, const char *src, int buffer_size)
 	return (copied);
 }
 
+/**
+ * _strdup - Duplicate a string.
+ * @str: The string to duplicate.
+ * Return: 0.
+ */
 char *_strdup(const char *str)
 {
 	size_t len;
@@ -36,7 +41,7 @@ char *_strdup(const char *str)
 
 	if (str == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 
 	len = _strlen(str);
@@ -45,7 +50,7 @@ char *_strdup(const char *str)
 
 	if (new_str == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 
 	_strcpy(new_str, str, len);
