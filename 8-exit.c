@@ -11,26 +11,14 @@
  */
 int internal_exit(int ac, char **av, char **env)
 {
-    int exit_status = 0;
+	(void)ac;
+	(void)av;
+	(void)env;
 
-    (void)ac;
-    (void)env;
+	free_av(av);
+	free_env(env);
+	free_shell_alias();
 
-    if (av[1] != NULL)
-    {
-        exit_status = _atoi(av[1]);
-        if (exit_status == -1)
-        {
-            fprintf(stderr, "Error: Illegal number: %s\n", av[1]);
-            exit_status = 2;
-        }
-    }
-
-    free_av(av);
-    free_env(env);
-    free_shell_alias();
-
-    exit(exit_status);
-    return (0);
+	exit(EXIT_SUCCESS);
+	return (0);
 }
-
