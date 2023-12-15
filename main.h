@@ -25,7 +25,7 @@ struct FunctionEntry
 	InternalFunction function;
 };
 InternalFunction is_internal_command(char *name);
-int internal_exit(int, char **av, char **env);
+int internal_exit(int ac, char **av, char **env);
 int internal_unsetenv(int ac, char **av, char **env);
 int internal_setenv(int ac, char **av, char **env);
 int internal_env(int, char **av, char **env);
