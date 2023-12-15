@@ -1,0 +1,27 @@
+# Ignore compiled binaries
+*.o
+*.out
+
+# Ignore executable files
+a.out
+
+# Ignore generated files
+*.exe
+*.dSYM/
+
+# Ignore editor-specific files
+*~
+
+# Ignore build/ and bin/ directories
+build/
+bin/
+
+# Ignore logs and temp files
+*.log
+*.tmp
+
+# Ignore user-specific files
+*.swp
+.DS_Store
+Thumbs.db
+

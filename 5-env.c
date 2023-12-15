@@ -85,6 +85,7 @@ int add_env(char **env, char *env_variable)
 	{
 		env_count++;
 	}
+
 	new_env = malloc((env_count + 2) * sizeof(char *));
 	if (new_env == NULL)
 	{

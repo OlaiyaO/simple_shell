@@ -33,14 +33,12 @@ int process_command(char **av, int new_ac, char **new_av)
 	internal_function = is_internal_command(new_av[0]);
 	if (internal_function != NULL)
 	{
-		internal_function(new_ac, new_av, env);
 		status = internal_function(new_ac, new_av, env);
 	}
 	else if (command_exists(new_av[0], command_path, env) != -1)
 	{
 		free(new_av[0]);
 		new_av[0] = _strdup(command_path);
-		fork_command(command_path, new_av, env);
 		status = fork_command(command_path, new_av, env);
 	}
 	else
@@ -51,6 +49,5 @@ int process_command(char **av, int new_ac, char **new_av)
 	last_status = status;
 	free_av(new_av);
 
-	return (1);
 	return (status);
 }

@@ -76,7 +76,6 @@ int process_command_line(char **av, char *lineptr)
 			token = get_token(NULL, " ");
 		}
 		new_av[++new_ac] = NULL;
-
 		last_status = process_command(av, new_ac, new_av);
 	}
 	return (0);

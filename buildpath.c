@@ -18,7 +18,6 @@ int buildpath(const char *str1, const char *str2, char *result, size_t buffer_si
 
 	if (buffer_size < (len1 + len2 + 2))
 	{
-		fprintf(stderr, "Buffer size is too small for concatenation.\n");
 		return (-1);
 	}
 
