@@ -27,7 +27,8 @@ int main(int ac, char **av, char **env)
 
 		if (fd == -1)
 		{
-
+			perror("Error opening file");
+			exit(EXIT_FAILURE);
 		}
 		else
 		{
