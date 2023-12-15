@@ -11,14 +11,16 @@
  */
 int internal_exit(int ac, char **av, char **env)
 {
-	(void)ac;
-	(void)av;
-	(void)env;
+	int rc = 0;
+	env = env;
 
+	if (ac > 1)
+	{
+		rc = _atoi(av[1]);
+	}
 	free_av(av);
 	free_env(env);
 	free_shell_alias();
-
-	exit(EXIT_SUCCESS);
+	exit(rc);
 	return (0);
 }
