@@ -20,10 +20,10 @@ int fork_command(char *lineptr, char **av, char **env)
 	status = 0;
 	child_pid = fork();
 
-	if (child_pid == -1)
+	if (child_pid < 0)
 	{
 		perror("Error:");
-		return (1);
+		return (-1);
 	}
 	if (child_pid == 0)
 	{

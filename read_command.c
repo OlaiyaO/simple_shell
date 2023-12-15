@@ -30,6 +30,7 @@ int read_command(char **lineptr, size_t *n, int fd)
 
 	if (num_read == -1)
 	{
+		_printf("Exit simple_shell");
 		return (-1);
 	}
 	end =  *n - 1;
