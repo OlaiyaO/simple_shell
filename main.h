@@ -52,5 +52,6 @@ void  free_shell_alias(void);
 char **get_shell_alias(void);
 int add_alias(char *alias_variable);
 int unset_alias(char *keyword);
+int square(int num);
 
 #endif
