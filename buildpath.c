@@ -6,17 +6,17 @@
  * @str1: 1st string.
  * @str2: 2nd string.
  * @result: ...
- * @buffer_size: Size of buffer.
+ * @bs: Size of buffer.
  * Return: 0.
  */
 
-int buildpath(const char *str1, const char *str2, char *result, size_t buffer_size)
+int buildpath(const char *str1, const char *str2, char *result, size_t bs)
 {
 	size_t len1 = strlen(str1);
 	size_t len2 = strlen(str2);
 	size_t i, j;
 
-	if (buffer_size < (len1 + len2 + 2))
+	if (bs < (len1 + len2 + 2))
 	{
 		return (-1);
 	}

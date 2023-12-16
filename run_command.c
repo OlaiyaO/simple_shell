@@ -33,7 +33,6 @@ int run_command(int ac, char **av, int interactive)
 		{
 			prompt();
 		}
-
 		lineptr = NULL;
 		n = 0;
 		if (read_command(&lineptr, &n, 0))

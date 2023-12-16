@@ -3,7 +3,7 @@
 #include "main.h"
 
 
-static char **shell_alias = NULL;
+static char **shell_alias;
 
 /**
  * get_shell_alias - string length

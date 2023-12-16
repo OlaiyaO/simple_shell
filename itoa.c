@@ -1,7 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+/**
+ * handle_zero - integer to a string.
+ * Return: result.
+ */
+char *handle_zero(void)
+{
+	char *result;
 
+	result = (char *)malloc(2);
+	if (result != NULL)
+	{
+		result[0] = '0';
+		result[1] = '\0';
+	}
+	return (result);
+}
+/**
+ * count_digits - integer to a string.
+ * @number: integer to convert.
+ *
+ * Return: result.
+ */
+int count_digits(int number)
+{
+	int digitCount;
+	int temp;
+
+	temp = number;
+	digitCount = 0;
+	while (temp > 0)
+	{
+		temp /= 10;
+		digitCount++;
+	}
+	return (digitCount);
+}
 /**
  * _itoa - integer to a string.
  * @number: integer to convert.
@@ -12,19 +47,12 @@ char *_itoa(int number)
 {
 	char *result;
 	bool isNegative;
-	int temp;
 	int digitCount;
 	int index;
 
 	if (number == 0)
 	{
-		result = (char *)malloc(2);
-		if (result != NULL)
-		{
-			result[0] = '0';
-			result[1] = '\0';
-		}
-		return (result);
+		return (handle_zero());
 	}
 	isNegative = false;
 	if (number < 0)
@@ -33,13 +61,8 @@ char *_itoa(int number)
 		number = -number;
 	}
 
-	temp = number;
-	digitCount = 0;
-	while (temp > 0)
-	{
-		temp /= 10;
-		digitCount++;
-	}
+	digitCount = count_digits(number);
+
 	result = (char *)malloc(digitCount + (isNegative ? 2 : 1));
 
 	if (result != NULL)

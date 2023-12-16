@@ -30,20 +30,47 @@ char *replace_variable(char *var)
 	return ((char *)NULL);
 }
 /**
+ * process_token - prints the environment
+ * @token: command-line arguments.
+ * @last_status: ...
+ * Return: Always 0.
+ */
+
+char *process_token(char *token, int last_status)
+{
+	char *alias = _getalias(token);
+
+	if (alias != NULL)
+	{
+		token = alias;
+	}
+	else if (token[0] == '$')
+	{
+		token = replace_variable(token);
+	}
+	else if (_strcmp(token, "&&") == 0)
+	{
+		if (last_status == 0)
+		{
+		}
+	}
+	else if (_strcmp(token, "||") == 0)
+	{
+	}
+	return (token);
+}
+
+/**
  * process_command_line - prints the environment
  * @lineptr: command-line arguments.
  * @av: ...
  * Return: Always 0.
  */
-
 int process_command_line(char **av, char *lineptr)
 {
-	char *token;
-	char *command;
+	char *token, *command, *new_av[10];
 	int new_ac;
-	char *new_av[10];
 	int last_status = 0;
-	char *alias;
 
 	token = get_token(lineptr, " ");
 	if (token != NULL)
@@ -54,30 +81,11 @@ int process_command_line(char **av, char *lineptr)
 		token = get_token(NULL, " ");
 		while (token != NULL)
 		{
-			alias = _getalias(token);
-
 			if (token[0] == '#')
 			{
 				break;
 			}
-			else if (alias != NULL)
-			{
-				token = alias;
-			}
-			else if (token[0] == '$')
-			{
-				token = replace_variable(token);
-			}
-			else if (_strcmp(token, "&&") == 0)
-			{
-				if (last_status == 0)
-				{
-				}
-			}
-			else if (_strcmp(token, "||") == 0)
-			{
-
-			}
+			token = process_token(token, last_status);
 
 			new_av[++new_ac] = (char *)_strdup(token);
 			token = get_token(NULL, " ");

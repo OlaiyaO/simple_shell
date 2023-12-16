@@ -4,9 +4,46 @@
 
 #define MAX_LINE_LENGTH 1024
 static char buffer[MAX_LINE_LENGTH];
-static ssize_t bytes_read = 0;
-static int buffer_index = 0;
+static ssize_t bytes_read;
+static int buffer_index;
+/**
+ * finish_read - string length
+ * @lineptr : ...
+ * @n : ...
+ * @index : ..
+ * @line_buffer: ..
+ * Return: Always 0.
+ */
+int finish_read(int index, char **lineptr, size_t *n, char *line_buffer)
+{
+	if (index > 0)
+	{
+		line_buffer[index] = 0;
+		*n = index;
+		*lineptr = _strdup(line_buffer);
+		return ((ssize_t)index);
+	}
+	return (-1);
+}
 
+/**
+ * is_eof - string length
+ * @lineptr : ...
+ * @n : ...
+ * @index : ..
+ * Return: Always 0.
+ */
+
+int is_eof(int index, char **lineptr, size_t *n)
+{
+	if (bytes_read == 0 && index == 0)
+	{
+		*n = _strlen("exit");
+		*lineptr = _strdup("exit");
+		return (0);
+	}
+	return (1);
+}
 
 /**
  * _getline - string length
@@ -25,25 +62,15 @@ ssize_t _getline(char **lineptr, size_t *n, int fd)
 	{
 		if (buffer_index == bytes_read)
 		{
-			/** attempt to read more icharacters */
 			bytes_read = read(fd, buffer, (size_t)MAX_LINE_LENGTH);
-			if (bytes_read == 0 && index == 0)
+			if (is_eof(index, lineptr, n) == 0)
 			{
-				*n = _strlen("exit");
-				*lineptr = _strdup("exit");
 				return (0);
 			}
 			buffer_index = 0;
 			if (bytes_read <= 0)
 			{
-				if (index > 0)
-				{
-					line_buffer[index] = 0;
-					*n = index;
-					*lineptr = _strdup(line_buffer);
-					return ((ssize_t)index);
-				}
-				return (-1);
+				return (finish_read(index, lineptr, n, line_buffer));
 			}
 		}
 		while (buffer_index < bytes_read && buffer[buffer_index] != '\n')

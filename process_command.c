@@ -7,7 +7,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-static int last_status = 0;
+static int last_status;
 
 /**
  * get_last_status - Get the last status.

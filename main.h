@@ -5,7 +5,7 @@ void print_env(char **env);
 size_t _strlen(const char *str);
 char *_getenv(char **env, const char *keyword);
 int _setenv(char **env, char *keyword, char *value);
-int buildpath(const char *str1, const char *str2, char *result, size_t buffer_size);
+int buildpath(const char *str1, const char *str2, char *result, size_t bs);
 int run_command(int ac, char **av,  int interactive);
 int run_file(int ac, char **av, int fd);
 int read_command(char **lineptr, size_t *n, int fd);
@@ -19,6 +19,11 @@ int _printf(const char *format, ...);
 
 typedef int (*InternalFunction)(int, char **, char **);
 
+/**
+ * struct FunctionEntry - Represents an entry for a function.
+ * @name: The name of the function.
+ * @function: The memory address of the function.
+ */
 struct FunctionEntry
 {
 	const char *name;
